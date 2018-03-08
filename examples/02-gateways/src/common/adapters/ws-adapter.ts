@@ -8,8 +8,9 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
 
 export class WsAdapter implements WebSocketAdapter {
+  constructor(private server){}
   public create(port: number) {
-    return new WebSocket.Server({ port });
+    return new WebSocket.Server({ server:this.server });
   }
 
   public bindClientConnect(server, callback: (...args: any[]) => void) {
