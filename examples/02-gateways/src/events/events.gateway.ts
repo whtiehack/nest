@@ -20,4 +20,11 @@ export class EventsGateway {
 
     return Observable.from(response).map(res => ({ event, data: res }));
   }
+  @SubscribeMessage('testAsync')
+  async onTestAsync(client,data){
+      console.log('clinet',client);
+    console.log('~~ test async',data);
+    await new Promise(resolve=>setTimeout(resolve,2000));
+    return {event:'testAsync',data:data};
+  }
 }
