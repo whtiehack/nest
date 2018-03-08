@@ -14,7 +14,7 @@
     "publish:next": "./node_modules/.bin/lerna publish --npm-tag=next --skip-git"
   },
   "engines": {
-    "node": ">=6.11.0"
+    "node": ">=8.0.0"
   },
   "author": "Kamil Mysliwiec",
   "license": "MIT",
