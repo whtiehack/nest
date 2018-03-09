@@ -1,4 +1,4 @@
-import { Controller, Get, UseInterceptors } from '@nestjs/common';
+import {Controller, Get, UseFilters, UseInterceptors} from '@nestjs/common';
 import {
   ClientProxy,
   Client,
@@ -7,9 +7,11 @@ import {
 } from '@nestjs/microservices';
 import { Observable } from 'rxjs/Observable';
 import { LoggingInterceptor } from '../common/interceptors/logging.interceptor';
-
+import {ExceptionFilter} from "../common/filters/rpc-exception.filter";
+import 'rxjs/add/observable/from';
 @Controller()
 @UseInterceptors(LoggingInterceptor)
+@UseFilters(new ExceptionFilter())
 export class MathController {
   @Client({ transport: Transport.TCP })
   client: ClientProxy;
@@ -25,4 +27,14 @@ export class MathController {
   sum(data: number[]): number {
     return (data || []).reduce((a, b) => a + b);
   }
+
+    @MessagePattern({ cmd: 'sum2' })
+    sum2(data: number[]) {
+        return Observable.from([1, 2, 3]);
+    }
+
+    @MessagePattern({ cmd: 'binary' })
+    binary(data: number[]): string {
+        return new Buffer(data).toString();
+    }
 }

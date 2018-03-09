@@ -30,7 +30,7 @@ export class UWsAdapter implements WebSocketAdapter {
                 return;
             }
             console.log(`message ${data} result is : ${result}`);
-            client.send(JSON.stringify(result));
+            client.send(result);
         });
         // Observable.fromEvent(client, 'message')
         //   .switchMap(buffer => this.bindMessageHandler(buffer, handlers, process))

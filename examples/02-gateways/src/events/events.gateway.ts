@@ -25,6 +25,6 @@ export class EventsGateway {
       console.log('clinet',client);
     console.log('~~ test async',data);
     await new Promise(resolve=>setTimeout(resolve,2000));
-    return {event:'testAsync',data:data};
+    return new Buffer([1,0,3,4,1,...data.message]).toString();
   }
 }
