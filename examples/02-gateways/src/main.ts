@@ -12,7 +12,7 @@ async function bootstrap() {
     const app:INestApplication = await NestFactory.create(ApplicationModule,instance as any);
     const server = http.createServer(instance);
     app.use('/public', express.static(path.join(__dirname, '../', 'client')));
-   // app.useWebSocketAdapter(new WsAdapter(server));
+  //  app.useWebSocketAdapter(new WsAdapter(server));
     app.useWebSocketAdapter(new UWsAdapter(server));
     await app.init();
   //  await app.listen(3000);

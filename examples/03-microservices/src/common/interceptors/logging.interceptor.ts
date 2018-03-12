@@ -9,7 +9,7 @@ export class LoggingInterceptor implements NestInterceptor {
     context: ExecutionContext,
     stream$: Observable<any>,
   ): Observable<any> {
-    console.log('Before...');
+    console.log('111Before...');
     const now = Date.now();
 
     return stream$.do(() => console.log(`After... ${Date.now() - now}ms`));

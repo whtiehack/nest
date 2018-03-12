@@ -9,3 +9,8 @@ import {MicroClientModule} from "../microClient/microClient.module";
   components: [CatsService],
 })
 export class CatsModule {}
+
+@Module({
+
+})
+export  class CatsModuleA {}

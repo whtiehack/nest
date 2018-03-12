@@ -1,9 +1,9 @@
 import {Controller, Get, UseFilters, UseInterceptors} from '@nestjs/common';
 import {
-  ClientProxy,
-  Client,
-  Transport,
-  MessagePattern,
+    ClientProxy,
+    Client,
+    Transport,
+    MessagePattern, RpcException,
 } from '@nestjs/microservices';
 import { Observable } from 'rxjs/Observable';
 import { LoggingInterceptor } from '../common/interceptors/logging.interceptor';
@@ -25,6 +25,7 @@ export class MathController {
 
   @MessagePattern({ cmd: 'sum' })
   sum(data: number[]): number {
+  //  throw new RpcException('~~server error~');
     return (data || []).reduce((a, b) => a + b);
   }
 

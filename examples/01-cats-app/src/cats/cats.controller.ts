@@ -17,13 +17,13 @@ import { LoggingInterceptor } from '../common/interceptors/logging.interceptor';
 import { TransformInterceptor } from '../common/interceptors/transform.interceptor';
 import { ParseIntPipe } from '../common/pipes/parse-int.pipe';
 import {MicroClientService} from "../microClient/microClient.service";
-import {ExceptionFilter} from "../common/filters/rpc-exception.filter";
+//import {ExceptionFilter} from "../common/filters/rpc-exception.filter";
 import 'rxjs/add/operator/do';
 
 @Controller('cats')
 @UseGuards(RolesGuard)
 @UseInterceptors(LoggingInterceptor, TransformInterceptor)
-@UseFilters(new ExceptionFilter())
+
 export class CatsController {
   constructor(private readonly catsService: CatsService,private readonly microClientService:MicroClientService) {}
 
